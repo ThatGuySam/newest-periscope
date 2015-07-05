@@ -4,35 +4,41 @@ require "vendor/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-
 include('config.php');
 
-//require_once("phpfastcache.php");
-
 phpFastCache::setup("path", dirname(__FILE__).'/cache'); // Path For Files
-
 
 // simple Caching with:
 $cache = phpFastCache();
 
 // Try to get $content from Caching First
 // product_page is "identity keyword";
-$content = $cache->get(TWITTER_SLUG);
+$link = $cache->get($username);
 
-if($content == null) {
+if($link == null) {
 	
 	$connection = new TwitterOAuth(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_SECRET);
 	$content = $connection->get(API_KIND, array(
-		"slug"					=> TWITTER_SLUG,
-		"q"						=> QUERY,
-		"owner_screen_name"		=> TWITTER_USER,
+		"screen_name"			=> $username,
 		"count"					=> intval(POSTS_COUNT),
-		"exclude_replies"		=> true,
-		"result_type"			=> RESULT_TYPE
 	));
 	
+	
+	foreach( $content as $tweet_object ){
+		
+		$urls = $tweet_object->entities->urls;//Get URLS
+		
+		foreach( $urls as $url ){
+			if (strpos($url->display_url,'periscope.tv') !== false)//Find periscope link
+				$link = $url->url; break;//Use that
+		}
+		
+		if( $link !== null ) break;
+		
+	}
+	
 	//$content = "DB QUERIES | FUNCTION_GET_PRODUCTS | ARRAY | STRING | OBJECTS";
-	$cache->set( TWITTER_SLUG , $content , CACHE_TIME );
+	$cache->set( $username , $link , CACHE_TIME );
 
 	//echo "Used API <br><br>";
 
@@ -41,14 +47,4 @@ if($content == null) {
 }
 
 
-
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-echo json_encode($content);
-
-/*
-echo '<pre>';
-//var_dump( $content );
-var_dump( $content );
-echo '</pre>';
-*/
+header('Location: '.$link, true, 301);
