@@ -47,4 +47,4 @@ if($link == null) {
 }
 
 
-header('Location: '.$link, true, 301);
+header('Location: '.$link, true, 302);
