@@ -34,7 +34,6 @@ if($content == null) {
 	));
 	
 	//$content = "DB QUERIES | FUNCTION_GET_PRODUCTS | ARRAY | STRING | OBJECTS";
-	// Write products to Cache in 10 minutes with same keyword
 	$cache->set( TWITTER_SLUG , $content , CACHE_TIME );
 
 	//echo "Used API <br><br>";
@@ -45,19 +44,6 @@ if($content == null) {
 
 
 
-
-
-//$content = json_encode( $content );
-
-/*
-foreach( $content as $tweet ){
-	
-	//if() 
-	
-	echo $tweet->text.'<br>';
-	
-}
-*/
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 echo json_encode($content);
