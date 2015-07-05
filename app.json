@@ -1,6 +1,6 @@
 {
-  "name": "Live Twitter Stream",
-  "description": "A PHP app for returning JSON of tweets",
-  "repository": "https://github.com/ThatGuySam/tth-stream",
-  "keywords": ["twitter", "live", "api"]
+  "name": "Newest Periscope Tweet",
+  "description": "Redirects to newest Periscope tweet",
+  "repository": "https://github.com/ThatGuySam/newest-periscope",
+  "keywords": ["twitter", "periscope", "api"]
 }
