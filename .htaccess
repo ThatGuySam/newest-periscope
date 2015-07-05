@@ -1,5 +1,8 @@
 Options +FollowSymLinks
 RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^pscp.in [NC]
+RewriteRule ^(.*)$ http://www.pscp.in/$1 [R=301,L]
  
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
