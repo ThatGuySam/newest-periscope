@@ -23,8 +23,11 @@
 		'::1'
 	);
 	
-	$tokens = explode('/', $_SERVER['REQUEST_URI']);
+	$request_url = parse_url($_SERVER['REQUEST_URI']);
+	$tokens = explode('/', $request_url['path']);
 	$username = $tokens[sizeof($tokens)-1];
+	
+	//$debug = $username;
 	
 	$query = 'from%3A'.$username;
 	
