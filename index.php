@@ -44,11 +44,7 @@ if($link == null) {
 	//echo "Used Cache <br><br>";
 }
 
-//echo $link;
-
-//$link = 'http://www.periscope.tv/w/aHBscDEyNTA5NTZ8Mzc1ODM2MjktDJlwi1H05ca09AWh--vC91Aq-440CeHPsXzKhtyFeQ==';
-
-//$debug = $link;
+if ( headers_sent() ) exit;//Already headers? Then don't redirect
 
 //if( $_GET['debug'] ) debug($debug); exit;
 
