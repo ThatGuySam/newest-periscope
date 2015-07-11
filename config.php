@@ -27,8 +27,6 @@
 	$tokens = explode('/', $request_url['path']);
 	$username = $tokens[sizeof($tokens)-1];
 	
-	//$debug = $username;
-	
 	$query = 'from%3A'.$username;
 	
 	$config_vars = array(
@@ -36,7 +34,7 @@
 	    "TWITTER_CONSUMER_SECRET"	=> 0,
 	    "OAUTH_TOKEN"				=> 0,
 	    "OAUTH_SECRET"				=> 0,
-	    "POSTS_COUNT"				=> 20,
+	    "POSTS_COUNT"				=> 50,//Only get last 20 tweets
 	    "API_KIND"					=> 'statuses/user_timeline',
 	    "CACHE_TIME"				=> 60
 	);
