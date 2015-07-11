@@ -46,9 +46,7 @@ if($link == null) {
 
 if ( headers_sent() ) exit;//Already headers? Then don't redirect
 
-//if( $_GET['debug'] ) debug($debug); exit;
 
 header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
 header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
 header('Location: '.$link, true, 303);
-exit;
