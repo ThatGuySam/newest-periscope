@@ -39,7 +39,20 @@ if($link == null) {
 	}
 	
 	$cache->set( $username , $link , CACHE_TIME );
+/*
+	if( $link ){
+		
+	}
+*/
 	
+	if( $link !== null ) {
+		
+		$cache->set( $username , $link , CACHE_TIME );
+		
+	} else {
+		echo "No Periscopes found in the last ".POSTS_COUNT." tweets";
+	}
+		
 } else {
 	//echo "Used Cache <br><br>";
 }
