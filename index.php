@@ -27,24 +27,32 @@ if($link == null) {
 	foreach( $content as $tweet_object ){
 		
 		$urls = $tweet_object->entities->urls;//Get URLS
-		
+		//$debug = $urls;
 		foreach( $urls as $url ){
+			//$debug = $url->expanded_url;
 			if (strpos($url->display_url,'periscope.tv') !== false)//Find periscope link
-				$link = $url->url; break;//Use that
+				$link = $url->expanded_url; break;//Use that
 		}
 		
 		if( $link !== null ) break;
 		
 	}
 	
-	//$content = "DB QUERIES | FUNCTION_GET_PRODUCTS | ARRAY | STRING | OBJECTS";
 	$cache->set( $username , $link , CACHE_TIME );
-
-	//echo "Used API <br><br>";
-
+	
 } else {
 	//echo "Used Cache <br><br>";
 }
 
+//echo $link;
 
-header('Location: '.$link, true, 302);
+//$link = 'http://www.periscope.tv/w/aHBscDEyNTA5NTZ8Mzc1ODM2MjktDJlwi1H05ca09AWh--vC91Aq-440CeHPsXzKhtyFeQ==';
+
+//$debug = $link;
+
+//if( $_GET['debug'] ) debug($debug); exit;
+
+header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
+header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // past date to encourage expiring immediately
+header('Location: '.$link, true, 303);
+exit;
