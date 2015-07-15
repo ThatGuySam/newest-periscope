@@ -48,7 +48,7 @@
 	);
 	
 	//Dev Values
-	if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) include('config-dev.php');
+	if(in_array($_SERVER['SERVER_ADDR'], $whitelist)) include('config-dev.php');
 	
 	//Steup Config Vars as Constants
 	foreach( $config_vars as $key => $default ){
