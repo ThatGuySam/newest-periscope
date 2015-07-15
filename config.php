@@ -20,7 +20,9 @@
 	
 	$whitelist = array(
 		'127.0.0.1',
-		'::1'
+		'::1',
+		'205.186.187.115'
+	);
 	);
 	
 	$request_url = parse_url($_SERVER['REQUEST_URI']);
