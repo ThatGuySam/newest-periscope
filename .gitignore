@@ -1,3 +1,4 @@
 config-dev.php
 composer.phar
 cache/*
+vendor/
