@@ -8,7 +8,18 @@ include('config.php');
 
 phpFastCache::setup("path", dirname(__FILE__).'/cache'); // Path For Files
 
-// simple Caching with:
+
+
+//User Whitelist Check
+if( !in_array($username, $user_whitelist) ){
+	echo "Clever girl... But you're not on the list. <a href='http://goo.gl/forms/0wgJeVpIaI'>Request Access</a>";
+	exit;
+}
+
+
+
+
+// Set Caching
 $cache = phpFastCache();
 
 // Try to get $content from Caching First
