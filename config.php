@@ -36,7 +36,8 @@
 	    "OAUTH_SECRET"				=> 0,
 	    "POSTS_COUNT"				=> 50,//Only get last 20 tweets
 	    "API_KIND"					=> 'statuses/user_timeline',
-	    "CACHE_TIME"				=> 60
+	    "CACHE_TIME"				=> 1 * 60,
+	    "RL_RESOURCES"				=> 'help,users,search,statuses'
 	);
 	
 	//Dev Values
