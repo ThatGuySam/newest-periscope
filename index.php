@@ -1,10 +1,11 @@
 <?php
 
+include('config.php');
+
 require "vendor/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-include('config.php');
 
 phpFastCache::setup("path", dirname(__FILE__).'/cache'); // Path For Files
 
