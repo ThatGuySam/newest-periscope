@@ -23,6 +23,11 @@
 		'::1',
 		'205.186.187.115'
 	);
+	
+	$user_whitelist = array(
+		'johnerikthinks',
+		'gutschurch',
+		'thatguysam'
 	);
 	
 	$request_url = parse_url($_SERVER['REQUEST_URI']);
